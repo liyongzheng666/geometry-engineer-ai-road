@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>几何算法工程师的 AI 之路</title>
+  <meta name="description" content="面向几何造型算法工程师的 12 周 AI 提效课程：验证闭环、退化输入防御、上下文注入。每周计划拆解 + 代码解读 + 补充知识点。">
+  <meta name="theme-color" content="#8fb4ff">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="返回页面顶部">
+        <span class="brand-mark">GEO</span>
+        <span class="brand-copy">
+          <strong>几何 AI 实验室</strong>
+          <span>12 周课程 · 验证闭环 · 代码解读</span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="页面导航">
+        <a href="#vision">展望</a>
+        <a href="#roadmap">路线</a>
+        <a href="#reader">周深拆</a>
+        <a href="https://github.com/liyongzheng666/geometry-engineer-ai-road" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="https://liyongzheng666.github.io/" target="_blank" rel="noreferrer">博客 ↗</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-main">
+          <span class="eyebrow">12 周 · 验证闭环 · Prompt 工程</span>
+          <h1 id="hero-title">几何算法工程师的 AI 之路</h1>
+          <p class="hero-lead">
+            面向 B 样条 / NURBS / 网格写了多年 C++ 的几何工程师：不学造 AI 系统，
+            只学把 AI 变成可信的生产力。每周一个"粘贴即验证"工作台——AI 写的代码
+            粘进去，编译、跑金标准测试、看 SVG，让数据替你判断 prompt 的好坏。
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#reader">开始阅读第 1 周</a>
+            <a class="btn" href="#roadmap">看 12 周路线</a>
+            <a class="btn" href="https://github.com/liyongzheng666/geometry-engineer-ai-road" target="_blank" rel="noreferrer">克隆代码仓库 ↗</a>
+          </div>
+          <div class="hero-meta" aria-label="课程核心数据">
+            <div class="mini-stat"><strong>12</strong><span>周完整课程周期</span></div>
+            <div class="mini-stat"><strong>3</strong><span>周已上线（含代码）</span></div>
+            <div class="mini-stat"><strong>8</strong><span>个验证闭环 harness</span></div>
+          </div>
+        </div>
+
+        <aside class="hero-panel" aria-label="验证闭环演示">
+          <div class="terminal-head">
+            <span class="terminal-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span>verify-loop.sh</span>
+          </div>
+          <div class="terminal-body">
+            <p><span class="prompt">$</span> cmake --build build && ./test_nurbs</p>
+            <p><span class="terminal-key pass">PASS</span> |P(0.25)| = 1（圆性测试）</p>
+            <p><span class="terminal-key pass">PASS</span> |P(0.50)| = 1  err=2.2e-16</p>
+            <p><span class="terminal-key pass">PASS</span> P(0) = (1,0,0) 端点插值</p>
+            <p><span class="terminal-key warn">OBSV</span> 权重全 1 → 退化 B 样条（观察题）</p>
+            <p class="terminal-success">✓ nurbs_output.svg 已生成 — 拖进浏览器看曲线</p>
+            <p class="terminal-note">没有验证闭环的 AI 输出只是文本；有了验证闭环，才是可信代码。</p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section" id="vision">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Vision</span>
+            <h2>这门课最终给你什么</h2>
+          </div>
+          <p>不是会几个 prompt，而是一套属于你自己的工作系统——以及最重要的：知道什么时候<strong>不该</strong>用 AI。</p>
+        </div>
+        <div class="vision-grid">
+          <article class="vision-card accent-blue">
+            <span>OUTPUT 01</span>
+            <strong>Prompt 词典</strong>
+            <p>15+ 个按场景分类的模板：算法生成、退化清单、代码 Review、SymPy 推导、测试生成。</p>
+          </article>
+          <article class="vision-card accent-violet">
+            <span>OUTPUT 02</span>
+            <strong>上下文片段库</strong>
+            <p>你项目的核心类型、命名与容差约定的纯文本聚合——每次会话先注入，AI 就写"你团队的代码"。</p>
+          </article>
+          <article class="vision-card accent-amber">
+            <span>OUTPUT 03</span>
+            <strong>失败日志 → 决策树</strong>
+            <p>12 周翻车样本提炼成三类清单：AI 总搞砸的不再碰、偶尔搞砸的严格 review、几乎不错的全权委托。</p>
+          </article>
+          <article class="vision-card accent-teal">
+            <span>OUTPUT 04</span>
+            <strong>可复用验证范式</strong>
+            <p>harness + PASTE ZONE + 数值金标准 + SVG——任何新几何算子都能照搭一个闭环。</p>
+          </article>
+        </div>
+        <p class="vision-rule">
+          核心命题：AI 永远会写出"看起来对、跑起来 90% 对、工业场景 10% 翻车"的代码——
+          <strong>那 10% 就是几何工程师的护城河</strong>。这 12 周练的是用判断力去校准 AI，
+          把能自动化的部分自动化，把精力释放到 AI 干不了的算法判断与容差设计上。
+        </p>
+      </section>
+
+      <section class="section" id="roadmap">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Learning Path</span>
+            <h2>三阶段 · 12 周路线</h2>
+          </div>
+          <p>先练表达（让 AI 精确知道你要什么），再上数学（SymPy 当推导搭档），最后融进日常工作流。</p>
+        </div>
+        <div class="path-grid">
+          <article class="path-card accent-blue">
+            <span class="path-number">01</span>
+            <span class="path-time">第 1–4 周</span>
+            <h3>表达精度</h3>
+            <p>公式化 prompt、退化输入防御、上下文注入——你已经知道算法该长什么样，任务是让 AI 也精确知道。</p>
+          </article>
+          <article class="path-card accent-violet">
+            <span class="path-number">02</span>
+            <span class="path-time">第 5–8 周</span>
+            <h3>数学引擎</h3>
+            <p>SymPy + AI 自动推导梯度与 Hessian，cse() 直出工业 C++；OCCT / CGAL 攻坚术。</p>
+          </article>
+          <article class="path-card accent-teal">
+            <span class="path-number">03</span>
+            <span class="path-time">第 9–12 周</span>
+            <h3>调优与工作流</h3>
+            <p>浮点灾难定位、遗留代码逆向、测试自动化、commit/PR/文档——最后沉淀成个人 SOP。</p>
+          </article>
+        </div>
+        <div class="week-list" aria-label="逐周清单">
+          <article><span>W01</span><strong>公式化 Prompt vs 大白话</strong><p>✅ 已上线 — Bezier / B 样条 / NURBS 验证闭环，<a href="#reader" data-open-week="w1">阅读拆解与代码解读 →</a></p></article>
+          <article><span>W02</span><strong>退化输入的防御性提示词</strong><p>✅ 已上线 — 点投影 / 点在多边形 / 射线-三角形，<a href="#reader" data-open-week="w2">阅读拆解与代码解读 →</a></p></article>
+          <article><span>W03</span><strong>上下文注入：让 AI 用你的代码风格</strong><p>✅ 已上线 — 三点定圆（风格判分）/ Eigen 平面拟合，<a href="#reader" data-open-week="w3">阅读拆解与代码解读 →</a></p></article>
+          <article class="planned"><span>W04</span><strong>综合实战：保特征网格平滑</strong><p>○ 规划中 — 前三周技能的第一次合体</p></article>
+          <article class="planned"><span>W05</span><strong>SymPy + AI 推导梯度</strong><p>○ 规划中 — 告别手算偏导数</p></article>
+          <article class="planned"><span>W06</span><strong>符号公式 → 工业 C++</strong><p>○ 规划中 — cse() 自动公共子表达式 + codegen</p></article>
+          <article class="planned"><span>W07</span><strong>OCCT / CGAL 攻坚术</strong><p>○ 规划中 — 把 AI 当私人 OCCT 顾问（带反幻觉指令）</p></article>
+          <article class="planned"><span>W08</span><strong>综合实战：ARAP 变形</strong><p>○ 规划中 — 阶段二的合体项目</p></article>
+          <article class="planned"><span>W09</span><strong>浮点灾难定位 + Code Review 工作流</strong><p>○ 规划中 — PR 前的标准动作</p></article>
+          <article class="planned"><span>W10</span><strong>遗留代码逆向 + 单元测试自动化</strong><p>○ 规划中 — 祖传代码翻译 + GTest 生成</p></article>
+          <article class="planned"><span>W11</span><strong>日常工作流杂项</strong><p>○ 规划中 — commit / PR / Doxygen / 论文加速</p></article>
+          <article class="planned"><span>W12</span><strong>SOP 沉淀</strong><p>○ 规划中 — Prompt 词典 + 决策树定稿</p></article>
+        </div>
+      </section>
+
+      <section class="section reader-section" id="reader">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Weekly Deep-Dive</span>
+            <h2>周深拆：计划 · 代码 · 补充</h2>
+          </div>
+          <p>每周三份文档：<strong>计划拆解</strong>（逐日任务与 prompt 要点）、<strong>代码解读</strong>（harness 为什么这么设计）、<strong>补充知识</strong>（第 1 周是 CMake 构建解读）。内容直接读自 GitHub 仓库，仓库更新页面即更新。</p>
+        </div>
+        <div class="week-switcher" role="tablist" aria-label="选择周">
+          <button class="week-tab is-active" type="button" role="tab" data-week="w1" aria-selected="true">第 1 周 · 验证闭环</button>
+          <button class="week-tab" type="button" role="tab" data-week="w2" aria-selected="false">第 2 周 · 退化防御</button>
+          <button class="week-tab" type="button" role="tab" data-week="w3" aria-selected="false">第 3 周 · 上下文注入</button>
+        </div>
+        <div class="doc-switcher" role="tablist" aria-label="选择文档">
+          <button class="doc-tab is-active" type="button" role="tab" data-kind="plan" aria-selected="true">计划拆解</button>
+          <button class="doc-tab" type="button" role="tab" data-kind="code" aria-selected="false">代码解读</button>
+          <button class="doc-tab" type="button" role="tab" data-kind="extra" aria-selected="false" id="extra-tab">补充：CMake 构建</button>
+          <button class="print-btn" type="button" id="print-page">打印当前文档</button>
+        </div>
+        <div class="reader-layout">
+          <aside class="reader-nav" aria-label="文档目录">
+            <strong>本篇目录</strong>
+            <nav id="doc-toc"><span class="toc-loading">正在整理目录…</span></nav>
+          </aside>
+          <article class="markdown-body" id="doc-content" aria-live="polite">
+            <div class="loading-card"><span></span><p>正在读取文档…</p></div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>
+        <strong>几何算法工程师的 AI 之路</strong>
+        <span>用几何工程师的判断力去校准 AI。第 4–12 周持续更新。</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/liyongzheng666/geometry-engineer-ai-road" target="_blank" rel="noreferrer">GitHub 仓库</a>
+        <a href="https://liyongzheng666.github.io/" target="_blank" rel="noreferrer">Ally 的博客</a>
+        <a href="https://liyongzheng666.github.io/ielts-study-plan/" target="_blank" rel="noreferrer">姊妹项目 · 雅思学习计划</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  // 打开本工作区时 VSCode 会提示安装这些扩展
+  "recommendations": [
+    "vadimcn.vscode-lldb",        // CodeLLDB：C++ 调试器（必装，launch.json 依赖它）
+    "hediet.debug-visualizer",    // Debug Visualizer：把控制点/曲线采样画成图
+    "usernamehw.errorlens",       // Error Lens：报错/诊断直接贴在行尾
+    "ms-vscode.cmake-tools"       // CMake Tools：配合本项目的 CMake 构建
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  // 给 VSCode 断点调试用的构建任务（Mac / Unix Makefiles）
+  "version": "2.0.0",
+  "tasks": [
+    {
+      // 配置成 Debug：带 -g -O0，断点才能命中
+      "label": "cmake-configure-debug",
+      "type": "shell",
+      "command": "cmake",
+      "args": [
+        "-S", "${workspaceFolder}",
+        "-B", "${workspaceFolder}/build",
+        "-G", "Unix Makefiles",
+        "-DCMAKE_BUILD_TYPE=Debug"
+      ],
+      "problemMatcher": []
+    },
+    {
+      // 实际构建；F5 前会自动跑（见 launch.json 的 preLaunchTask）
+      "label": "build-debug",
+      "type": "shell",
+      "command": "cmake",
+      "args": [
+        "--build", "${workspaceFolder}/build"
+      ],
+      "dependsOn": "cmake-configure-debug",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"]
+    }
+  ]
+}

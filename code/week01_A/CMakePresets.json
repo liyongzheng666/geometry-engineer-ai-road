@@ -1,0 +1,43 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": { "major": 3, "minor": 21, "patch": 0 },
+  "configurePresets": [
+    {
+      "name": "windows-base",
+      "hidden": true,
+      "binaryDir": "${sourceDir}/build",
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Windows" }
+    },
+    {
+      "name": "windows-vs2026",
+      "displayName": "Windows · VS2026 (x64) → build/",
+      "description": "等价于：cmake -S . -B build -G \"Visual Studio 18 2026\" -A x64",
+      "inherits": "windows-base",
+      "generator": "Visual Studio 18 2026",
+      "architecture": { "value": "x64", "strategy": "set" }
+    },
+    {
+      "name": "windows-vs2022",
+      "displayName": "Windows · VS2022 (x64) → build/",
+      "description": "等价于：cmake -S . -B build -G \"Visual Studio 17 2022\" -A x64",
+      "inherits": "windows-base",
+      "generator": "Visual Studio 17 2022",
+      "architecture": { "value": "x64", "strategy": "set" }
+    },
+    {
+      "name": "windows-ninja",
+      "displayName": "Windows · Ninja (产 compile_commands.json，给 clangd)",
+      "description": "等价于：cmake -S . -B build -G \"Ninja Multi-Config\"（VS 生成器不产 compile_commands.json，clangd 用这个）",
+      "inherits": "windows-base",
+      "generator": "Ninja Multi-Config"
+    }
+  ],
+  "buildPresets": [
+    { "name": "vs2026-debug",   "displayName": "VS2026 · Debug",   "configurePreset": "windows-vs2026", "configuration": "Debug" },
+    { "name": "vs2026-release", "displayName": "VS2026 · Release", "configurePreset": "windows-vs2026", "configuration": "Release" },
+    { "name": "vs2022-debug",   "displayName": "VS2022 · Debug",   "configurePreset": "windows-vs2022", "configuration": "Debug" },
+    { "name": "vs2022-release", "displayName": "VS2022 · Release", "configurePreset": "windows-vs2022", "configuration": "Release" },
+    { "name": "ninja-debug",    "displayName": "Ninja · Debug",    "configurePreset": "windows-ninja",  "configuration": "Debug" },
+    { "name": "ninja-release",  "displayName": "Ninja · Release",  "configurePreset": "windows-ninja",  "configuration": "Release" }
+  ]
+}

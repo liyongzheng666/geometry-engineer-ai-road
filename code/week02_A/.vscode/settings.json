@@ -1,0 +1,14 @@
+{
+  // ── 调试时变量显示增强 ──
+  // 行尾内联显示变量当前值（不用悬停/翻变量面板）
+  "debug.inlineValues": "on",
+  // 变量面板里同时显示类型，几何代码里区分 double/Point3D 更直观
+  "debug.showVariableTypes": true,
+
+  // ── CodeLLDB ──
+  // 调试控制台按 LLDB 命令解释输入，这样可直接敲 watchpoint set / frame variable
+  // （要算表达式时在前面加反引号 `，例如  `ctrl.size()  ）
+  "lldb.consoleMode": "commands",
+  // 自动解引用指针，看 Point3D* 不用手动 *
+  "lldb.dereferencePointers": true
+}

@@ -1,0 +1,30 @@
+# CMake build artifacts
+build/
+out/
+cmake-build-*/
+
+# Visual Studio（生成的工程文件都在 build/ 里，这里是双保险）
+.vs/
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
+CMakeSettings.json
+CMakeUserPresets.json
+# 注意：CMakePresets.json 必须提交 —— Win 篇笔记 1.5/1.6 节依赖它
+# 注意：.vscode/ 必须提交 —— VSCode 调试笔记的配置都在里面
+
+# Generated SVG outputs (re-generated every run)
+*.svg
+
+# CMake cache
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+
+# Tool caches & local-only files
+.cache/
+.DS_Store
+.claude/settings.local.json

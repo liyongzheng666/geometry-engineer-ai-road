@@ -1,0 +1,32 @@
+{
+  // 需要安装扩展：CodeLLDB (vadimcn.vscode-lldb)
+  // F5 → 弹窗选 test_bezier / test_bspline / test_nurbs
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug 当前选择的 test",
+      "program": "${workspaceFolder}/build/bin/${input:testTarget}",
+      "args": [],
+      // 工作目录设到 bin，生成的 SVG 就落在可执行文件旁边，好找
+      "cwd": "${workspaceFolder}/build/bin",
+      // F5 前自动构建 Debug 版
+      "preLaunchTask": "build-debug",
+      // ── 变量显示增强：让 Point3D 在变量面板/悬停里直接显示成 (x, y, z) ──
+      // 不用展开就能看到坐标；vector<Point3D> 的每个元素也会整齐成一行
+      "initCommands": [
+        "type summary add --summary-string \"(${var.x}, ${var.y}, ${var.z})\" Point3D"
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "id": "testTarget",
+      "type": "pickString",
+      "description": "选择要调试的测试程序",
+      "options": ["test_point_inversion", "test_point_in_polygon", "test_ray_triangle"],
+      "default": "test_point_inversion"
+    }
+  ]
+}

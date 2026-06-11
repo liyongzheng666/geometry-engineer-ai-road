@@ -1,0 +1,17 @@
+# ---- 构建产物（任何一周的工程） ----
+**/build/
+**/out/
+cmake-build-*/
+
+# ---- 运行时产物：SVG 每次运行重新生成 ----
+*.svg
+
+# ---- 本地备份压缩包不入库 ----
+*.zip
+
+# ---- 工具缓存 / 本地文件 ----
+**/.cache/
+.DS_Store
+.claude/settings.local.json
+**/.vs/
+CMakeUserPresets.json

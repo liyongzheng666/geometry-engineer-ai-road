@@ -1,0 +1,12 @@
+{
+  // week04_A 说明文档的 markdownlint 配置（与 week01_A 一致）。
+  // 关掉的规则都和本目录笔记的「刻意写法」冲突，统一放行。
+  "default": true,
+  "MD013": false,  // 中文按语义换行，不做 80 列硬折行
+  "MD025": false,  // README 用多个一级标题分平台大节
+  "MD024": false,  // 平台对照小节会重名
+  "MD040": false,  // ASCII 目录树/示意图没有语言可标
+  "MD060": false,  // 表格紧凑竖线风格
+  "MD031": false,
+  "MD032": false
+}

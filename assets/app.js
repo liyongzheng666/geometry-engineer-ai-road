@@ -29,6 +29,33 @@ const weeks = {
       code:  { label: "代码解读",   path: "site-docs/week03_代码解读.md" },
       extra: { label: "Eigen 集成",  path: "site-docs/week03_补充_Eigen集成.md" }
     }
+  },
+  w4: {
+    label: "第 4 周 · 网格平滑",
+    extraLabel: "补充：网格与保特征",
+    docs: {
+      plan:  { label: "计划拆解",   path: "docs/week04_实操_保特征网格平滑.md" },
+      code:  { label: "代码解读",   path: "site-docs/week04_代码解读.md" },
+      extra: { label: "网格数据结构与保特征", path: "site-docs/week04_补充_网格数据结构与保特征.md" }
+    }
+  },
+  w5: {
+    label: "第 5 周 · SymPy 梯度",
+    extraLabel: "补充：有限差分验证",
+    docs: {
+      plan:  { label: "计划拆解",   path: "docs/week05_实操_SymPy推导梯度.md" },
+      code:  { label: "代码解读",   path: "site-docs/week05_代码解读.md" },
+      extra: { label: "有限差分验证", path: "site-docs/week05_补充_有限差分验证.md" }
+    }
+  },
+  w6: {
+    label: "第 6 周 · 符号转 C++",
+    extraLabel: "补充：CSE 与稀疏组装",
+    docs: {
+      plan:  { label: "计划拆解",   path: "docs/week06_实操_符号转CPP.md" },
+      code:  { label: "代码解读",   path: "site-docs/week06_代码解读.md" },
+      extra: { label: "CSE 与 Eigen 稀疏组装", path: "site-docs/week06_补充_CSE与Eigen稀疏组装.md" }
+    }
   }
 };
 
